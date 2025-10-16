@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CHOCCO — Шоколадный сайт</title>
+
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body { font-family: 'Montserrat', sans-serif; margin:0; background:#fef9f4; color:#3a2f24; line-height:1.5; }
+    a{ color:#6b4c3b; text-decoration:none } a:hover{ text-decoration:underline }
+    button{ cursor:pointer; }
+
+    /* welcome */
+    .welcome{
+      background:linear-gradient(135deg,#4e342e 0%,#3a251f 100%);
+      color:#f3e9dc;
+      padding:80px 20px 120px;
+      text-align:center;
+      overflow:hidden;
+    }
+    .welcome__title{ font-size:3.2rem; margin:0 0 16px; font-weight:700; letter-spacing:1px; }
+    .welcome__text{ font-size:1.1rem; max-width:680px; margin:0 auto 28px; }
+    .welcome__button{
+      background:#a9745b; color:#fff4e6; border:none; padding:12px 34px; border-radius:36px; font-weight:700;
+      box-shadow:0 6px 18px rgba(169,116,91,0.7);
+    }
+    .welcome__button:hover{ background:#926e52; }
+
+    /* catalog */
+    .catalog{
+      background:#fff9f1; max-width:1140px; margin:-60px auto 40px; padding:48px; border-radius:20px; box-shadow:0 12px 40px rgba(169,116,91,0.08);
+    }
+    .catalog__title{ font-size:2rem; color:#5d3a1a; text-align:center; margin-bottom:30px; font-weight:700; }
+    .catalog__grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+    .catalog__item{ background:#fff5e6; border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(169,116,91,0.12); transition:transform .2s; }
+    .catalog__item:hover{ transform:translateY(-6px) }
+    .catalog__img{ width:100%; height:180px; object-fit:cover; display:block; }
+    .catalog__info{ padding:16px; text-align:left; }
+    .catalog__name{ font-weight:700; color:#4a3a1a; margin-bottom:8px; }
+    .catalog__desc{ font-size:0.95rem; color:#6b4c3b; margin-bottom:10px; }
+    .catalog__price{ font-weight:700; color:#6b4c3b; }
+
+    /* video block */
+    .video{
+      max-width:900px; margin:40px auto; padding:24px; text-align:center;
+    }
+    .video__title{ font-size:1.6rem; color:#5d3a1a; font-weight:700; margin-bottom:18px; }
+    .video__box{ border-radius:14px; overflow:hidden; box-shadow:0 12px 40px rgba(169,116,91,0.12); background:#000; }
+
+    /* why */
+    .why{ max-width:1140px; margin:40px auto; padding:36px; text-align:center; }
+    .why__list{ display:flex; gap:20px; justify-content:space-between; flex-wrap:wrap; }
+    .why__item{ background:#fef3e7; border-radius:12px; padding:20px; flex:1 1 220px; box-shadow:0 8px 30px rgba(169,116,91,0.08); font-weight:600; }
+
+    /* reviews */
+    .reviews{ max-width:1140px; margin:40px auto; padding:36px; border-radius:12px; background:#fef9f4; box-shadow:0 12px 45px rgba(169,116,91,0.08); }
+    .reviews__list{ display:flex; gap:16px; flex-wrap:wrap; }
+    .reviews__item{ background:#fff5e6; padding:18px; border-radius:10px; flex:1 1 300px; font-style:italic; }
+
+    /* form */
+    .form{ max-width:640px; margin:40px auto 80px; padding:40px; border-radius:16px; background:#fff9f1; box-shadow:0 16px 55px rgba(169,116,91,0.12); }
+    .form__group{ margin-bottom:18px; text-align:left; }
+    .form__label{ display:block; margin-bottom:8px; font-weight:700; color:#3a251f; }
+    .form__input,.form__textarea{ width:100%; padding:12px 14px; border-radius:12px; border:2px solid #a9745b; font-size:1rem; }
+    .form__input:focus,.form__textarea:focus{ outline:none; border-color:#6b4c3b; }
+    .form__button{ width:100%; padding:14px; border-radius:999px; background:#6b4c3b; color:#fff4e6; border:none; font-weight:700; font-size:1.05rem; box-shadow:0 10px 25px rgba(107,76,59,0.8); }
+
+    /* map */
+    .map{ max-width:900px; margin:40px auto 80px; text-align:center; }
+    .map iframe{ width:100%; height:420px; border:0; border-radius:12px; box-shadow:0 12px 40px rgba(169,116,91,0.12); }
+
+    footer{ text-align:center; padding:18px 8px; color:#6b4c3b }
+
+    @media(max-width:600px){
+      .welcome__title{ font-size:2rem }
+      .catalog__img{ height:160px }
+      .video__box video{ height:220px }
+      .map iframe{ height:300px }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- welcome -->
+  <section class="welcome" id="welcome">
+    <h1 class="welcome__title">CHOCCO — наслаждайся вкусом шоколада</h1>
+    <p class="welcome__text">Создаём сладкие моменты с заботой и любовью. Лучший шоколад в городе!</p>
+    <button class="welcome__button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Заказать сейчас</button>
+  </section>
+
+  <!-- catalog -->
+  <section class="catalog" id="catalog">
+    <h2 class="catalog__title">Наши продукты</h2>
+    <div class="catalog__grid">
+      <!-- CHOCCO Classic (исправлено: рабочая картинка) -->
+      <div class="catalog__item">
+        <img class="catalog__img" src="https://images.unsplash.com/photo-1606312619349-6e56cf4cb2a3?auto=format&fit=crop&w=1200&q=80" alt="CHOCCO Classic">
+        <div class="catalog__info">
+          <div class="catalog__name">CHOCCO Classic</div>
+          <div class="catalog__desc">Классический шоколадный батончик — мягкий вкус и хрустящая текстура.</div>
+          <div class="catalog__price">₸650</div>
+        </div>
+      </div>
+
+      <!-- CHOCCO Almond -->
+      <div class="catalog__item">
+        <img class="catalog__img" src="https://images.unsplash.com/photo-1600431521340-491eca880813?auto=format&fit=crop&w=1200&q=80" alt="CHOCCO Almond">
+        <div class="catalog__info">
+          <div class="catalog__name">CHOCCO Almond</div>
+          <div class="catalog__desc">С хрустящим миндалём — отличное сочетание текстур.</div>
+          <div class="catalog__price">₸700</div>
+        </div>
+      </div>
+
+      <!-- CHOCCO Coconut -->
+      <div class="catalog__item">
+        <img class="catalog__img" src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=1200&q=80" alt="CHOCCO Coconut">
+        <div class="catalog__info">
+          <div class="catalog__name">CHOCCO Coconut</div>
+          <div class="catalog__desc">Ароматный кокос в каждом кусочке.</div>
+          <div class="catalog__price">₸750</div>
+        </div>
+      </div>
+
+      <!-- CHOCCO Nuts (исправлено: рабочая картинка с орехами) -->
+      <div class="catalog__item">
+        <img class="catalog__img" src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80" alt="CHOCCO Nuts">
+        <div class="catalog__info">
+          <div class="catalog__name">CHOCCO Nuts</div>
+          <div class="catalog__desc">Микс орехов и тёмного шоколада — полезно и вкусно.</div>
+          <div class="catalog__price">₸800</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- video (HTML5) -->
+  <section class="video" id="video">
+    <h3 class="video__title">Видео — как мы создаём шоколад</h3>
+    <div class="video__box">
+      <!-- публичный mp4 (надежно воспроизводится в браузерах) -->
+      <video controls playsinline preload="metadata" poster="https://images.unsplash.com/photo-1532634896-26909d0d4b4d?auto=format&fit=crop&w=1200&q=80" style="width:100%; height:auto; display:block;">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        Ваш браузер не поддерживает воспроизведение видео.
+      </video>
+    </div>
+  </section>
+
+  <!-- why -->
+  <section class="why" id="why">
+    <div class="why__list">
+      <div class="why__item">🍫 Натуральные ингредиенты без добавок и консервантов</div>
+      <div class="why__item">👩‍🍳 Ручная работа наших мастеров-кондитеров</div>
+      <div class="why__item">🚚 Быстрая доставка свежих изделий по городу</div>
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <section class="reviews" id="reviews">
+    <div class="reviews__list">
+      <div class="reviews__item">Шоколад CHOCCO просто божественный! Ни разу не разочаровалась. <div style="margin-top:10px; font-weight:700; color:#6b4c3b; text-align:right;">— Анна П.</div></div>
+      <div class="reviews__item">Заказываю торты на праздники уже 3 года. Лучшее качество! <div style="margin-top:10px; font-weight:700; color:#6b4c3b; text-align:right;">— Дмитрий К.</div></div>
+      <div class="reviews__item">Очень приятное обслуживание и доставка в срок. <div style="margin-top:10px; font-weight:700; color:#6b4c3b; text-align:right;">— Марина С.</div></div>
+    </div>
+  </section>
+
+  <!-- form -->
+  <section class="form" id="contact">
+    <h2 style="text-align:center; color:#5d3a1a; margin-top:0; margin-bottom:18px;">Оформить заказ</h2>
+    <form action="#" method="POST" novalidate>
+      <div class="form__group">
+        <label class="form__label" for="name">Имя</label>
+        <input class="form__input" id="name" name="name" type="text" placeholder="Введите ваше имя" required>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="phone">Телефон</label>
+        <input class="form__input" id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="comment">Ваши пожелания</label>
+        <textarea class="form__textarea" id="comment" name="comment" placeholder="Опишите ваш заказ или пожелания"></textarea>
+      </div>
+      <button type="submit" class="form__button">Отправить заказ</button>
+    </form>
+  </section>
+
+  <!-- map (Астана, центр — Байтерек) -->
+  <section class="map" id="map">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19988.67838006542!2d71.4147996!3d51.1282293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424585b6d4c11a15%3A0x5b4f064dca6a9f72!2z0JDQstGC0L7RgdC60LjQuSDQmtC-0LvQsNGC0LXQvdC40LU!5e0!3m2!1sru!2skz!4v1698073771000!5m2!1sru!2skz"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <footer>
+    <p>© 2025 CHOCCO — Все права защищены.</p>
+  </footer>
+
+</body>
+</html>
